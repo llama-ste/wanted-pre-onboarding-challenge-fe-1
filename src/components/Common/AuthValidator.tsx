@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import useToastMessage from "../../hooks/common/useToastMessage";
 import { IChildrenProps } from "../../types/children";
 
@@ -22,7 +22,7 @@ const AuthValidator = ({ children }: IChildrenProps) => {
     }
   }, [navigate, showToast, isAuthPage]);
 
-  return <Outlet />;
+  return <>{children}</>;
 };
 
 export default AuthValidator;

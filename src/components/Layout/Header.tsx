@@ -5,6 +5,7 @@ import HeaderView from "./Views/HeaderView";
 
 const Header = () => {
   const navigate = useNavigate();
+  const hasToken = !!localStorage.getItem("token");
 
   const HeaderProps: IHeaderProps = {
     onGoToHome: () => navigate("/todos"),
@@ -12,6 +13,7 @@ const Header = () => {
       localStorage.removeItem("token");
       navigate("/auth");
     },
+    hasToken,
   };
   return <HeaderView {...HeaderProps} />;
 };

@@ -7,4 +7,5 @@ export interface ILayoutProps extends IChildrenProps {
 export interface IHeaderProps {
   onGoToHome: () => void;
   onLogout: () => void;
+  hasToken: boolean;
 }

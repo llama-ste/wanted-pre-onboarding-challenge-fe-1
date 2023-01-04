@@ -9,20 +9,32 @@ import ToDoDetail from "../pages/toDo/ToDoDetail";
 const Router = () => {
   return (
     <Routes>
-      <Route path="" element={<AuthValidator />}>
-        <Route path="/todos" element={<Home />}>
-          <Route path=":id" element={<ToDoDetail />} />
-        </Route>
-        <Route path="/auth" element={<Auth />}>
-          <Route path="sign-up" element={<SignUp />} />
-        </Route>
-        <Route
-          path="*"
-          element={
-            <Empty containerHeight="90vh" text="존재하지 않는 페이지입니다." />
-          }
-        />
+      <Route
+        path="/todos"
+        element={
+          <AuthValidator>
+            <Home />
+          </AuthValidator>
+        }
+      >
+        <Route path=":id" element={<ToDoDetail />} />
       </Route>
+      <Route
+        path="/auth"
+        element={
+          <AuthValidator>
+            <Auth />
+          </AuthValidator>
+        }
+      >
+        <Route path="sign-up" element={<SignUp />} />
+      </Route>
+      <Route
+        path="*"
+        element={
+          <Empty containerHeight="90vh" text="존재하지 않는 페이지입니다." />
+        }
+      />
     </Routes>
   );
 };

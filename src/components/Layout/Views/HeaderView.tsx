@@ -30,14 +30,14 @@ const Logo = styled(Typography)`
   font-weight: bold;
 `;
 
-const HeaderView = ({ onGoToHome, onLogout }: IHeaderProps) => {
+const HeaderView = ({ onGoToHome, onLogout, hasToken }: IHeaderProps) => {
   return (
     <Container>
       <Wrapper>
         <Logo onClick={onGoToHome} variant="h5">
           ToDos
         </Logo>
-        <Button onClick={onLogout}>로그아웃</Button>
+        <Button onClick={onLogout}>{hasToken ? "로그아웃" : "로그인"}</Button>
       </Wrapper>
     </Container>
   );
