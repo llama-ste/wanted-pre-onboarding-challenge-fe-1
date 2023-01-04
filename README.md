@@ -1,6 +1,6 @@
 # ToDos
 원티드 프리온보딩 프론트엔드 사전과제 <br/>
-Link : [사전과제 안내](https://github.com/starkoora/wanted-pre-onboarding-challenge-fe-1-api#login)
+Link : [Velog 회고](https://velog.io/@llama/%EC%9B%90%ED%8B%B0%EB%93%9C-%ED%94%84%EB%A6%AC%EC%98%A8%EB%B3%B4%EB%94%A9-%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C) / [사전과제 안내](https://github.com/starkoora/wanted-pre-onboarding-challenge-fe-1-api#login)
 
 <br/>
 
