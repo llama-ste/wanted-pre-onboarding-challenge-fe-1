@@ -1,7 +1,7 @@
 import { AxiosResponse } from "axios";
 import { useQuery } from "react-query";
 import ToDoAPI from "../../../api/toDo";
-import { TToDoByIdResponse } from "../../../types/toDo";
+import { IToDoByIdResponse } from "../../../types/toDo";
 import useToastMessage from "../../common/useToastMessage";
 
 const useGetToDoById = (id: string | undefined) => {
@@ -11,7 +11,7 @@ const useGetToDoById = (id: string | undefined) => {
     onError: () => {
       showToast("error", "불러오기에 실패했습니다.");
     },
-    select: (data: AxiosResponse<TToDoByIdResponse>) => {
+    select: (data: AxiosResponse<IToDoByIdResponse>) => {
       return data.data.data;
     },
   });
