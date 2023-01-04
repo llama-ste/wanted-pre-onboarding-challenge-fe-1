@@ -1,20 +1,20 @@
-import { IToDoForm } from "../types/toDo";
+import { IToDoForm, IToDoFormAndId } from "../types/toDo";
 import client from "./client";
 
 const ToDoAPI = {
-  getTodos: () => {
+  getToDos: () => {
     return client.get("/todos");
   },
-  getTodoById: (id: string) => {
+  getToDoById: (id: string | undefined) => {
     return client.get(`/todos/${id}`);
   },
-  createTodo: (data: IToDoForm) => {
+  createToDo: (data: IToDoForm) => {
     return client.post("/todos", data);
   },
-  updateTodo: (id: string, data: IToDoForm) => {
+  updateToDo: ({ id, data }: IToDoFormAndId) => {
     return client.put(`/todos/${id}`, data);
   },
-  deleteTodo: (id: string) => {
+  deleteToDo: (id: string | undefined) => {
     return client.delete(`/todos/${id}`);
   },
 };
