@@ -2,7 +2,6 @@ import "react-toastify/dist/ReactToastify.css";
 
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { CssBaseline } from "@mui/material";
 import { QueryClient, QueryClientProvider } from "react-query";
@@ -12,6 +11,8 @@ import "./index.css";
 import App from "./App";
 import GlobalStyle from "./styles/GlobalStyle";
 import Layout from "./components/Layout/Layout";
+import CustomRouter from "./components/Common/CustomRouter";
+import customHistory from "./utils/history";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -57,7 +58,7 @@ const queryClient = new QueryClient(queryOptions);
 
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <CustomRouter history={customHistory}>
       <QueryClientProvider client={queryClient}>
         <ReactQueryDevtools />
         <ToastContainer {...toastConfig} />
@@ -67,6 +68,6 @@ root.render(
           <App />
         </Layout>
       </QueryClientProvider>
-    </BrowserRouter>
+    </CustomRouter>
   </React.StrictMode>
 );
