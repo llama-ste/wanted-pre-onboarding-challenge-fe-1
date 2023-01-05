@@ -15,11 +15,6 @@ const AuthValidator = ({ children }: IChildrenProps) => {
       showToast("warning", "이미 로그인 되어있습니다.");
       navigate("/todos", { replace: true });
     }
-
-    if (!hasToken && !isAuthPage) {
-      showToast("warning", "로그인을 해주세요.");
-      navigate("/auth", { replace: true });
-    }
   }, [navigate, showToast, isAuthPage]);
 
   return <>{children}</>;

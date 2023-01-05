@@ -9,14 +9,7 @@ import ToDoDetail from "../pages/toDo/ToDoDetail";
 const Router = () => {
   return (
     <Routes>
-      <Route
-        path="/todos"
-        element={
-          <AuthValidator>
-            <Home />
-          </AuthValidator>
-        }
-      >
+      <Route path="/todos" element={<Home />}>
         <Route path=":id" element={<ToDoDetail />} />
       </Route>
       <Route
