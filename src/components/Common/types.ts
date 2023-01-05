@@ -1,5 +1,6 @@
 import React from "react";
 import { IChildrenProps } from "../../types/children";
+import { THistory } from "../../types/navigate";
 
 export interface IModalProps extends IChildrenProps {
   open: boolean;
@@ -20,4 +21,9 @@ export interface IEmptyProps {
 
 export interface IEmptyContainerProps {
   containerHeight?: string;
+}
+
+export interface IRouterProps {
+  history: THistory;
+  [key: string]: any;
 }
