@@ -29,6 +29,8 @@ client.interceptors.response.use(
       toast.warning("로그인을 해주세요.");
       customHistory.replace("/auth");
     }
+
+    return Promise.reject(error);
   }
 );
 
