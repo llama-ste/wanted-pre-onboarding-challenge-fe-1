@@ -14,4 +14,6 @@ export interface ISignUpProps extends IAuthForm {
   onSignUp: () => void;
   validData: { isEmailValid: boolean; isPasswordValid: boolean };
   isValid: boolean;
+  isNotEnterEmail: boolean;
+  isNotEnterPassword: boolean;
 }

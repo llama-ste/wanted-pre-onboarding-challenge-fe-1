@@ -15,29 +15,29 @@ const SignUp = () => {
     isEmailValid: false,
     isPasswordValid: false,
   });
+  const isNotEnterEmail = email.length === 0;
+  const isNotEnterPassword = password.length === 0;
 
   const signUpProps: ISignUpProps = {
-    email,
-    password,
     onEmailChange: (e) => {
-      if (emailValidator(e.target.value)) {
-        setValidData((p) => ({ ...p, isEmailValid: true }));
-      } else {
-        setValidData((p) => ({ ...p, isEmailValid: false }));
-      }
+      emailValidator(e.target.value)
+        ? setValidData((p) => ({ ...p, isEmailValid: true }))
+        : setValidData((p) => ({ ...p, isEmailValid: false }));
       setEmail(e.target.value);
     },
     onPasswordChange: (e) => {
-      if (passwordValidator(e.target.value)) {
-        setValidData((p) => ({ ...p, isPasswordValid: true }));
-      } else {
-        setValidData((p) => ({ ...p, isPasswordValid: false }));
-      }
+      passwordValidator(e.target.value)
+        ? setValidData((p) => ({ ...p, isPasswordValid: true }))
+        : setValidData((p) => ({ ...p, isPasswordValid: false }));
       setPassword(e.target.value);
     },
     onSignUp: () => signUpMutate({ email, password }),
+    email,
+    password,
     validData,
     isValid: validData.isEmailValid && validData.isPasswordValid,
+    isNotEnterEmail,
+    isNotEnterPassword,
   };
 
   return <SignUpView {...signUpProps} />;

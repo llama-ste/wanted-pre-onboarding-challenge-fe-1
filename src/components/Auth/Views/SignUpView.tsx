@@ -13,13 +13,15 @@ const Container = styled.div`
 `;
 
 const SignUpView = ({
+  onEmailChange,
+  onPasswordChange,
+  onSignUp,
   email,
   password,
   validData,
   isValid,
-  onEmailChange,
-  onPasswordChange,
-  onSignUp,
+  isNotEnterEmail,
+  isNotEnterPassword,
 }: ISignUpProps) => {
   return (
     <Container>
@@ -30,9 +32,11 @@ const SignUpView = ({
         label="Email"
         value={email}
         onChange={onEmailChange}
-        error={!validData.isEmailValid}
+        error={isNotEnterEmail ? false : !validData.isEmailValid}
         helperText={
-          validData.isEmailValid ? "" : "이메일 형식에 맞게 입력해주세요."
+          isNotEnterEmail || validData.isEmailValid
+            ? ""
+            : "이메일 형식에 맞게 입력해주세요."
         }
       />
       <TextField
@@ -40,13 +44,15 @@ const SignUpView = ({
         label="Password"
         value={password}
         onChange={onPasswordChange}
-        error={!validData.isPasswordValid}
+        error={isNotEnterPassword ? false : !validData.isPasswordValid}
         helperText={
-          validData.isPasswordValid ? "" : "비밀번호는 8자리 이상이어야 합니다."
+          isNotEnterPassword || validData.isPasswordValid
+            ? ""
+            : "비밀번호는 8자리 이상이어야 합니다."
         }
       />
       <Button
-        disabled={!isValid}
+        disabled={isNotEnterEmail || isNotEnterPassword ? true : !isValid}
         onClick={onSignUp}
         size="large"
         variant="contained"
