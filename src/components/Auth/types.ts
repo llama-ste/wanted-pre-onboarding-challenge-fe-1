@@ -3,6 +3,9 @@ import { IUserInfo } from "../../types/auth";
 interface IAuthForm extends IUserInfo {
   onEmailChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onPasswordChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  validData: { isEmailValid: boolean; isPasswordValid: boolean };
+  isNotEnterEmail: boolean;
+  isNotEnterPassword: boolean;
 }
 
 export interface ILoginProps extends IAuthForm {
@@ -12,8 +15,4 @@ export interface ILoginProps extends IAuthForm {
 
 export interface ISignUpProps extends IAuthForm {
   onSignUp: () => void;
-  validData: { isEmailValid: boolean; isPasswordValid: boolean };
-  isValid: boolean;
-  isNotEnterEmail: boolean;
-  isNotEnterPassword: boolean;
 }

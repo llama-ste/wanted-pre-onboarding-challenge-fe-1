@@ -35,7 +35,6 @@ const SignUp = () => {
     email,
     password,
     validData,
-    isValid: validData.isEmailValid && validData.isPasswordValid,
     isNotEnterEmail,
     isNotEnterPassword,
   };

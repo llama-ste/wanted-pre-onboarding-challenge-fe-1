@@ -19,7 +19,6 @@ const SignUpView = ({
   email,
   password,
   validData,
-  isValid,
   isNotEnterEmail,
   isNotEnterPassword,
 }: ISignUpProps) => {
@@ -52,7 +51,11 @@ const SignUpView = ({
         }
       />
       <Button
-        disabled={isNotEnterEmail || isNotEnterPassword ? true : !isValid}
+        disabled={
+          isNotEnterEmail || isNotEnterPassword
+            ? true
+            : !(validData.isEmailValid && validData.isPasswordValid)
+        }
         onClick={onSignUp}
         size="large"
         variant="contained"

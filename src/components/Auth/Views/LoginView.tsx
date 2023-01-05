@@ -21,26 +21,54 @@ const UnderLineTypography = styled(Typography)`
 `;
 
 const LoginView = ({
-  email,
-  password,
   onEmailChange,
   onPasswordChange,
   onLogin,
   onGoToSignUp,
+  email,
+  password,
+  validData,
+  isNotEnterEmail,
+  isNotEnterPassword,
 }: ILoginProps) => {
   return (
     <Container>
       <Typography textAlign="center" variant="h4">
         로그인
       </Typography>
-      <TextField label="Email" value={email} onChange={onEmailChange} />
+      <TextField
+        label="Email"
+        value={email}
+        onChange={onEmailChange}
+        error={isNotEnterEmail ? false : !validData.isEmailValid}
+        helperText={
+          isNotEnterEmail || validData.isEmailValid
+            ? ""
+            : "이메일 형식에 맞게 입력해주세요."
+        }
+      />
       <TextField
         type="password"
         label="Password"
         value={password}
         onChange={onPasswordChange}
+        error={isNotEnterPassword ? false : !validData.isPasswordValid}
+        helperText={
+          isNotEnterPassword || validData.isPasswordValid
+            ? ""
+            : "비밀번호는 8자리 이상이어야 합니다."
+        }
       />
-      <Button onClick={onLogin} size="large" variant="contained">
+      <Button
+        disabled={
+          isNotEnterEmail || isNotEnterPassword
+            ? true
+            : !(validData.isEmailValid && validData.isPasswordValid)
+        }
+        onClick={onLogin}
+        size="large"
+        variant="contained"
+      >
         로그인
       </Button>
       <Typography textAlign="center" variant="caption">
