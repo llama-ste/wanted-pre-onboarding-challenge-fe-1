@@ -1,4 +1,4 @@
-describe("Assignment1", () => {
+describe("Assignment 1 - Login / SignUp", () => {
   const loginFn = () => {
     cy.intercept("/auth").as("login");
 
