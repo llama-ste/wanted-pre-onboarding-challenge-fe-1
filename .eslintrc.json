@@ -1,0 +1,10 @@
+{
+  "overrides": [
+    {
+      "files": ["*.spec.js"],
+      "rules": {
+        "no-unused-expressions": 0
+      }
+    }
+  ]
+}
