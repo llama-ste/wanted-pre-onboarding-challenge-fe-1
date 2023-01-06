@@ -38,7 +38,7 @@ const ToDoLayoutView = ({
     <Container>
       <BtnWrapper>
         <Button onClick={onOpenModal} variant="contained">
-          New
+          NEW
         </Button>
       </BtnWrapper>
       <ContentWrapper>

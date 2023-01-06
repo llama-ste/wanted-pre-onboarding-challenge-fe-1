@@ -26,8 +26,14 @@ client.interceptors.response.use(
     const isTokenMissing = error.response?.data.details === "Token is missing";
 
     if (isTokenMissing) {
+      toast.dismiss();
+      toast.clearWaitingQueue();
       toast.warning("로그인을 해주세요.");
       customHistory.replace("/auth");
+    } else {
+      toast.dismiss();
+      toast.clearWaitingQueue();
+      toast.warning(error.response?.data.details);
     }
 
     return Promise.reject(error);
