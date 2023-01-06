@@ -1,6 +1,7 @@
 describe("Assignment 1 - Login / SignUp", () => {
   const loginFn = () => {
-    cy.intercept("/auth").as("login");
+    cy.intercept("POST", "/users/login").as("postLogin");
+    cy.intercept("GET", "/todos").as("getTodos");
 
     cy.visit("/auth");
     cy.get("input[type=text]").type(Cypress.env("AUTH_EMAIL"));
@@ -8,7 +9,8 @@ describe("Assignment 1 - Login / SignUp", () => {
     cy.get("button")
       .contains("로그인")
       .click()
-      .then(() => () => cy.wait("@login"));
+      .then(() => cy.wait("@postLogin"))
+      .then(() => cy.wait("@getTodos"));
   };
 
   it("로그인 페이지의 이메일,비밀번호 input과 로그인 button 확인", () => {
@@ -53,7 +55,7 @@ describe("Assignment 1 - Login / SignUp", () => {
   });
 
   it("로그인시 토큰은 로컬스토리지 저장 후 토큰이 존재한다면 루트 경로로 리다이렉트", () => {
-    cy.intercept("/todos").as("getTodos");
+    cy.intercept("GET", "/todos").as("getTodos");
 
     loginFn();
 
@@ -69,7 +71,7 @@ describe("Assignment 1 - Login / SignUp", () => {
   });
 
   it("토큰이 유효하지 않다면 로그인 페이지로 리다이렉트", () => {
-    cy.intercept("/todos").as("addTodo");
+    cy.intercept("POST", "/todos").as("postTodo");
 
     loginFn();
     cy.clearAllLocalStorage();
@@ -87,9 +89,12 @@ describe("Assignment 1 - Login / SignUp", () => {
       .find("textarea[aria-invalid=false]")
       .type("Test content");
 
-    cy.get("button").contains("추가").click();
-    cy.wait("@addTodo").then(() => {
-      cy.url().should("contain", "/auth");
-    });
+    cy.get("button")
+      .contains("추가")
+      .click()
+      .then(() => cy.wait("@postTodo"))
+      .then(() => {
+        cy.url().should("contain", "/auth");
+      });
   });
 });

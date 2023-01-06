@@ -7,6 +7,7 @@ export default defineConfig({
     env: {
       AUTH_EMAIL: "test@test.com",
       AUTH_PASSWORD: "testtest",
+      BASE_URL: "http://localhost:3000",
     },
   },
 });
