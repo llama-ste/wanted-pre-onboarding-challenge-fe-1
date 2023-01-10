@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import useDeleteToDo from "../../hooks/mutation/toDo/useDeleteToDo";
 import usePutToDo from "../../hooks/mutation/toDo/usePutToDo";
 import useGetToDos from "../../hooks/query/toDo/useGetToDos";
@@ -8,22 +8,21 @@ import ToDoListView from "./Views/ToDoListView";
 
 const ToDoList = () => {
   const navigate = useNavigate();
-  const { pathname } = useLocation();
-  const [selectedId, setSelectedId] = useState("");
+  const params = useParams();
+  const [selectedId, setSelectedId] = useState<undefined | string>("");
   const { data, isLoading } = useGetToDos();
   const { mutate: putToDoMutate } = usePutToDo();
   const { mutate: deleteToDoMutate } = useDeleteToDo();
 
   useEffect(() => {
-    const isHomePage = pathname === "/todos";
+    const hasId = !!params?.id;
 
-    if (isHomePage) {
-      setSelectedId("");
+    if (hasId) {
+      setSelectedId(params?.id);
     } else {
-      const id = pathname.replace("/todos/", "");
-      setSelectedId(id);
+      setSelectedId("");
     }
-  }, [pathname]);
+  }, [params]);
 
   const ToDoListProps: IToDoListProps = {
     onPutToDo: () => putToDoMutate,
