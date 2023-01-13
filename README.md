@@ -4,6 +4,13 @@ Link : [Velog 회고](https://velog.io/@llama/%EC%9B%90%ED%8B%B0%EB%93%9C-%ED%94
 
 <br/>
 
+# E2E Test with.Cypress
+
+![Cypress Test](https://user-images.githubusercontent.com/90495580/212241503-33b33c22-e755-43c7-abb9-c2e1a9f2b81e.gif)
+
+
+<br/>
+
 # Preview
 ### 로그인 및 회원가입 페이지
 ![auth](https://user-images.githubusercontent.com/90495580/210528238-36a0df74-4d16-45e1-afa1-db5ea135fea6.gif)
